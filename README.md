@@ -52,10 +52,10 @@ All your data - folders, favorites, collections, watch progress - lives in a sin
 ## Installation
 
 ### Option 1 - Installer (recommended)
-Run `Marquee Setup 1.0.0.exe` and follow the wizard. Marquee will then be available from the Start Menu.
+Run `Setup.exe` and follow the wizard. Marquee will then be available from the Start Menu.
 
 ### Option 2 - Portable
-Run `Marquee.exe` from `dist/win-unpacked/` directly - no installation needed.
+Run `Marquee.exe` from your `Unpacked.zip` that's been extracted directly - no installation needed.
 
 ### Option 3 - From source
 ```bash
@@ -81,7 +81,7 @@ The build outputs to `dist/`:
 Notes:
 - Release builds are unsigned; Windows SmartScreen may show a warning on first run - *More info → Run anyway*.
 - If your npm version blocks package install scripts, run the Electron binary download manually: `node node_modules/electron/install.js` before `npm start`.
-- The installer is configured for per-user, non-one-click installs and lets you choose the installation directory.
+- The installer is one-click, go install.
 
 ## Development
 
