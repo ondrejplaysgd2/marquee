@@ -1,0 +1,29 @@
+{
+  "name": "marquee-movie-player",
+  "productName": "Marquee",
+  "version": "1.0.0",
+  "author": "OndrejPlaysGD and OpenCode!",
+  "description": "A cinematic movie player with collections and favorites.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.0": true
+  },
+  "build": {
+    "appId": "com.ondrej.marquee",
+    "win": {
+      "target": [
+        "nsis",
+        "dir"
+      ],
+      "icon": "icon.png"
+    }
+  }
+}

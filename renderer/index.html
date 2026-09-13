@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; media-src 'self' file: blob: data:; img-src 'self' file: data: blob:; style-src 'self' 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marquee</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="titlebar">
+  <span class="tb-brand"><span class="tb-dot"></span>MARQUEE</span>
+</div>
+
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-section">
+      <div class="side-title">LIBRARY</div>
+      <button class="side-item active" data-nav="home"><span class="side-ico">◆</span>Home</button>
+      <button class="side-item" data-nav="favorites"><span class="side-ico">♥</span>Favorites<span class="side-count" id="favCount"></span></button>
+    </div>
+    <div class="side-section grow">
+      <div class="side-title-row">
+        <div class="side-title">COLLECTIONS</div>
+        <button class="mini-btn" id="newCollectionBtn" title="New collection">＋</button>
+      </div>
+      <div id="collectionList" class="collection-list"></div>
+    </div>
+    <div class="side-section">
+      <button class="side-item" id="addFolderBtn"><span class="side-ico">▣</span>Add folder&hellip;</button>
+      <button class="side-item" id="rescanBtn"><span class="side-ico">⟳</span>Scan now</button>
+    </div>
+    <div class="side-footer" id="scanMeta"></div>
+  </aside>
+
+  <main class="content" id="content">
+    <header class="content-head">
+      <div>
+        <div class="title-row">
+          <h1 class="content-title" id="contentTitle">Cinema</h1>
+          <div class="collection-tools" id="collectionTools" hidden>
+            <button class="icobtn" id="renameCollBtn" title="Rename collection">✎</button>
+            <button class="icobtn danger" id="deleteCollBtn" title="Delete collection">✕</button>
+          </div>
+        </div>
+        <p class="content-sub" id="contentSub"></p>
+      </div>
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input id="searchInput" type="text" placeholder="Search your library&hellip;" autocomplete="off" spellcheck="false">
+      </div>
+    </header>
+
+    <section class="row-block" id="continueRow" hidden>
+      <h2 class="row-title">Continue watching</h2>
+      <div class="row-grid" id="continueGrid"></div>
+    </section>
+
+    <section class="row-block">
+      <h2 class="row-title" id="gridTitle">All films</h2>
+      <div class="movie-grid" id="movieGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-mark">◐</div>
+        <h3>Nothing playing in this aisle</h3>
+        <p>No films match here yet. Use <b>Add folder</b> to grow your library.</p>
+        <button class="btn primary" id="emptyAddBtn">＋ Add movies</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="overlay detail" id="detail" hidden>
+  <div class="scrim" data-close></div>
+  <div class="detail-card">
+    <div class="backdrop" id="dBackdrop"></div>
+    <div class="detail-body">
+      <button class="close-x" data-close>✕</button>
+      <div class="detail-poster" id="dPoster"></div>
+      <div class="detail-info">
+        <div class="detail-tags" id="dTags"></div>
+        <h1 class="detail-title" id="dTitle"></h1>
+        <div class="detail-meta" id="dMeta"></div>
+        <div class="detail-actions">
+          <button class="btn big primary" id="dPlay">▶ &nbsp;Play</button>
+          <button class="btn big" id="dResume" hidden></button>
+          <button class="btn big" id="dVlc">VLC</button>
+          <button class="btn big ghost" id="dFav">♥ Favorite</button>
+        </div>
+        <div class="detail-extra">
+          <div class="detail-label">Collections</div>
+          <div class="chips" id="dChips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay player" id="player" hidden>
+  <video id="video" preload="metadata"></video>
+  <div class="player-vignette"></div>
+
+  <div class="player-topbar">
+    <div class="p-movie">
+      <div class="p-title" id="pTitle"></div>
+      <div class="p-sub" id="pSub"></div>
+    </div>
+    <button class="p-btn p-exit" id="pExit" title="Back — Esc">✕</button>
+  </div>
+
+  <div class="resume-card" id="resumeCard" hidden>
+    <h3 id="resumeTitle"></h3>
+    <p id="resumeText"></p>
+    <div class="resume-actions">
+      <button class="btn big primary" id="resumeBtn">Resume</button>
+      <button class="btn big" id="restartBtn">From the start</button>
+    </div>
+  </div>
+
+  <div class="unsupported-card" id="unsupportedCard" hidden>
+    <div class="err-mark">⚠</div>
+    <h3>This one beats the built-in engine</h3>
+    <p id="unsupportedText">The format is not supported by the in-app player. VLC can handle it.</p>
+    <div class="resume-actions">
+      <button class="btn big primary" id="unsupportedVlcBtn">Open with VLC</button>
+      <button class="btn big" id="unsupportedCloseBtn">Go back</button>
+    </div>
+  </div>
+
+  <div class="buffering" id="buffering" hidden><div class="spinner"></div></div>
+  <div class="center-hint" id="centerHint"></div>
+
+  <div class="player-controls" id="playerControls">
+    <div class="seek-wrap">
+      <input id="seek" type="range" min="0" max="1000" value="0" step="1">
+      <div class="seek-hover" id="seekHover"></div>
+    </div>
+    <div class="ctrl-row">
+      <button class="p-btn" id="btnPlay" title="Play/Pause — Space">▶</button>
+      <button class="p-btn" id="btnBack10" title="Back 10s — ←">↺10</button>
+      <button class="p-btn" id="btnFwd10" title="Forward 10s — →">10↻</button>
+      <div class="p-time" id="timeLabel">0:00 / 0:00</div>
+      <div class="spacer"></div>
+      <button class="p-btn" id="btnVlc" title="Open in VLC">VLC</button>
+      <button class="p-btn" id="btnSpeed" title="Playback speed — S">1×</button>
+      <button class="p-btn" id="btnMute" title="Mute — M">♫</button>
+      <input id="vol" class="vol-slider" type="range" min="0" max="100" value="80" title="Volume">
+      <button class="p-btn" id="btnFull" title="Fullscreen — F">⛶</button>
+    </div>
+  </div>
+</div>
+
+<div class="coll-menu" id="collMenu" hidden></div>
+
+<div class="movie-menu" id="movieMenu" hidden></div>
+
+<div class="toasts" id="toasts"></div>
+
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal-card">
+    <h3 id="modalTitle"></h3>
+    <input id="modalInput" type="text" placeholder="Collection name">
+    <div class="modal-actions">
+      <button class="btn" id="modalCancel">Cancel</button>
+      <button class="btn primary" id="modalOk">Create</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
