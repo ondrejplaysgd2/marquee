@@ -52,7 +52,7 @@ All your data - folders, favorites, collections, watch progress - lives in a sin
 ## Installation
 
 ### Option 1 - Installer (recommended)
-Run `[Setup.exe](https://github.com/ondrejplaysgd2/marquee/releases/download/v1.0.0/Setup.exe)` and just wait for it to install. Marquee will then be available from the Start Menu.
+Run [Setup.exe](https://github.com/ondrejplaysgd2/marquee/releases/download/v1.0.0/Setup.exe) and just wait for it to install. Marquee will then be available from the Start Menu.
 
 ### Option 2 - Portable
 Run `Marquee.exe` from your `Unpacked.zip` that's been extracted, directly - no installation needed.
@@ -105,5 +105,5 @@ renderer/app.js       Library, collections, player and menus
 ```
 
 ## License
-See (LICENSE file)[https://github.com/ondrejplaysgd2/marquee?tab=MIT-1-ov-file] for the license.
+See [LICENSE file](https://github.com/ondrejplaysgd2/marquee?tab=MIT-1-ov-file) for the license.
 Licensed MIT.
