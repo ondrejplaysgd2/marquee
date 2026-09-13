@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marquee — A Cinematic Movie Player</title>
+  <meta name="description" content="A local-first, cinematic movie player for your personal collection. Beautiful poster art, smart metadata parsing, VLC fallback, and a theater-grade player." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <img src="favicon.png" alt="Marquee" width="32" height="32" />
+      <span>Marquee</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#player">Player</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/ondrejplaysgd2/marquee/releases/tag/v1.0.0" class="btn btn-sm">GitHub Release</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="curtain curtain-left"></div>
+      <div class="curtain curtain-right"></div>
+      <div class="spotlight"></div>
+    </div>
+    <div class="hero-content anim-fade-up">
+      <img src="favicon.png" alt="Marquee" class="hero-logo anim-pop" />
+      <h1 class="anim-fade-up" style="animation-delay:.15s">Marquee</h1>
+      <p class="hero-tagline anim-fade-up" style="animation-delay:.25s">Your movies. Your way.<br/>A cinematic companion for every film on your hard drive.</p>
+      <div class="hero-actions anim-fade-up" style="animation-delay:.35s">
+        <a href="https://github.com/ondrejplaysgd2/marquee/releases/download/v1.0.0/Marquee.Setup.1.0.0.exe" class="btn btn-primary">Download installer</a>
+        <a href="https://github.com/ondrejplaysgd2/marquee/releases/tag/v1.0.0" class="btn btn-outline">All releases</a>
+      </div>
+      <span class="hero-version anim-fade-up" style="animation-delay:.45s">v1.0.0 &middot; Windows x64</span>
+    </div>
+  </header>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title anim-reveal">Everything you need</h2>
+      <p class="section-sub anim-reveal">No accounts, no cloud, no tracking. Just your films, beautifully organized.</p>
+
+      <div class="feature-grid">
+        <div class="card anim-reveal">
+          <div class="card-icon">&#128269;</div>
+          <h3>Smart scanning</h3>
+          <p>Finds films in Downloads and any folder you add. Parses title, year, resolution and audio language from file names automatically.</p>
+        </div>
+        <div class="card anim-reveal">
+          <div class="card-icon">&#127902;</div>
+          <h3>Generated poster art</h3>
+          <p>Every film gets a unique gradient poster with a matching monogram — no internet, no API. Drop a <code>.jpg</code> next to the file to use your own.</p>
+        </div>
+        <div class="card anim-reveal">
+          <div class="card-icon">&#9734;</div>
+          <h3>Favorites &amp; collections</h3>
+          <p>Group films any way you like. Rename collections freely — a hidden slug keeps internal references clean. Favorite anything with one click.</p>
+        </div>
+        <div class="card anim-reveal">
+          <div class="card-icon">&#9210;</div>
+          <h3>Continue watching</h3>
+          <p>Resume where you left off. Progress is saved as you watch and surfaced on the Home page for quick pick-up.</p>
+        </div>
+        <div class="card anim-reveal">
+          <div class="card-icon">&#127916;</div>
+          <h3>Cinematic player</h3>
+          <p>Letterboxed frame, film-grain overlay, auto-hiding controls. Seek, speed, volume — all at your fingertips. Fullscreen hides the cursor too.</p>
+        </div>
+        <div class="card anim-reveal">
+          <div class="card-icon">&#128225;</div>
+          <h3>VLC fallback</h3>
+          <p>Unusual codec? Subtitles only VLC can handle? Open in VLC with one click from the context menu or detail view.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYER SHOWCASE ===== -->
+  <section class="section section-dark" id="player">
+    <div class="container">
+      <h2 class="section-title anim-reveal">Built for watching</h2>
+      <p class="section-sub anim-reveal">Theater-grade controls, zero friction.</p>
+
+      <div class="showcase anim-reveal">
+        <div class="showcase-player">
+          <div class="showcase-frame">
+            <div class="showcase-scrim"></div>
+            <div class="showcase-grain"></div>
+            <div class="showcase-controls">
+              <button class="sc-btn">&#9654;</button>
+              <div class="sc-timeline"><div class="sc-progress" style="width:62%"></div><div class="sc-thumb" style="left:62%"></div></div>
+              <span class="sc-time">52:14 &frasl; 1:24:14</span>
+              <button class="sc-btn">&#128266;</button>
+              <button class="sc-btn">&#9974;</button>
+            </div>
+          </div>
+          <div class="showcase-badge">1080P</div>
+        </div>
+
+        <ul class="showcase-list">
+          <li class="anim-reveal" style="animation-delay:.1s"><strong>Seek &amp; skip</strong> — click the timeline or use arrow keys</li>
+          <li class="anim-reveal" style="animation-delay:.15s"><strong>Speed control</strong> — 0.5&times; to 2&times; playback</li>
+          <li class="anim-reveal" style="animation-delay:.2s"><strong>Fullscreen</strong> — cursor hides when the UI auto-hides</li>
+          <li class="anim-reveal" style="animation-delay:.25s"><strong>Resume</strong> — pick up where you left off</li>
+          <li class="anim-reveal" style="animation-delay:.3s"><strong>VLC handoff</strong> — one click to open in VLC</li>
+          <li class="anim-reveal" style="animation-delay:.35s"><strong>Keyboard shortcuts</strong> — Space, arrows, M, F, S, Esc</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSTALL ===== -->
+  <section class="section" id="install">
+    <div class="container">
+      <h2 class="section-title anim-reveal">Get started</h2>
+      <p class="section-sub anim-reveal">Three options, same great movie player.</p>
+
+      <div class="steps">
+        <div class="step anim-reveal">
+          <div class="step-num">1</div>
+          <h3>Installer</h3>
+          <p>Download <code>Marquee.Setup.1.0.0.exe</code>, run it, and follow the wizard. Marquee appears in your Start Menu.</p>
+          <a href="https://github.com/ondrejplaysgd2/marquee/releases/download/v1.0.0/Marquee.Setup.1.0.0.exe" class="btn btn-primary btn-block">Download installer</a>
+        </div>
+        <div class="step anim-reveal" style="animation-delay:.1s">
+          <div class="step-num">2</div>
+          <h3>Portable</h3>
+          <p>Download the release, extract the ZIP, and run <code>Marquee.exe</code> directly — no install needed.</p>
+          <a href="https://github.com/ondrejplaysgd2/marquee/releases/tag/v1.0.0" class="btn btn-outline btn-block">View release</a>
+        </div>
+        <div class="step anim-reveal" style="animation-delay:.2s">
+          <div class="step-num">3</div>
+          <h3>From source</h3>
+          <pre><code>git clone https://github.com/ondrejplaysgd2/marquee.git
+cd marquee
+npm install
+npm start</code></pre>
+        </div>
+      </div>
+
+      <div class="note anim-reveal">
+        <strong>Optional:</strong> install <a href="https://www.videolan.org/vlc/">VLC</a> to play any format the built-in engine can't decode.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="favicon.png" alt="" width="24" height="24" />
+      <span>Marquee v1.0.0 &middot; MIT License</span>
+      <a href="https://github.com/ondrejplaysgd2/marquee">GitHub</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
